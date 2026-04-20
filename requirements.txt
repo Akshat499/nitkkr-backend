@@ -14,7 +14,7 @@ langchain
 langchain-groq
 langchain-community
 langchain-chroma
-langchain-huggingface
+langchain-chroma
 chromadb
 pypdf
-sentence-transformers
+fastembed
