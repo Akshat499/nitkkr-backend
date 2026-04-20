@@ -1,0 +1,13 @@
+venv/
+__pycache__/
+*.pyc
+*.pyo
+.env
+uploads/
+vectorstore/
+vectorstore_results/
+vectorstore_announcements/
+*.db
+*.sqlite3
+debug_chat.py
+.DS_Store
