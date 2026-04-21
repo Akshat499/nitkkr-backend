@@ -17,6 +17,29 @@ app.add_middleware(
 
 Base.metadata.create_all(bind=engine)
 
+def seed_admin():
+    from db import SessionLocal
+    from models import User
+    from services.auth_service import hash_password
+    db = SessionLocal()
+    try:
+        if not db.query(User).filter(User.email == "admin@nitkkr.ac.in").first():
+            new_admin = User(
+                name="Admin",
+                email="admin@nitkkr.ac.in",
+                password_hash=hash_password("admin@123"),
+                role="admin"
+            )
+            db.add(new_admin)
+            db.commit()
+            print("✅ Default admin created during startup.")
+    except Exception as e:
+        print(f"Error seeding admin: {e}")
+    finally:
+        db.close()
+
+seed_admin()
+
 # Include all routers
 app.include_router(auth.router)
 app.include_router(admin.router)
